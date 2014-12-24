@@ -1,5 +1,7 @@
-package com.blogspot.lifeinide.clibernate.test;
+package com.blogspot.lifeinide.birtexample;
 
+import com.blogspot.lifeinide.birtexample.model.Company;
+import com.blogspot.lifeinide.birtexample.model.Department;
 import com.blogspot.lifeinide.clibernate.respository.IRepository;
 import com.blogspot.lifeinide.clibernate.services.BaseCliService;
 import org.apache.commons.cli.CommandLine;
@@ -16,18 +18,18 @@ import java.util.List;
  * @author l0co@wp.pl
  */
 @Service
-public class TestCliService extends BaseCliService {
+public class BirtExample extends BaseCliService {
 
 	protected static SecureRandom random = new SecureRandom();
 
 	@Autowired
-	protected IRepository<TestEntity> testRepository;
+	protected IRepository<Company> testRepository;
 
 	@Override
 	protected void addOptions(Options options) {
-		options.addOption("a", "add", true, "add objects <count>");
-		options.addOption("l", "list", false, "list objects");
-		options.addOption("d", "delete", false, "delete objects");
+		options.addOption("a", "add", true, "add companies <count>");
+		options.addOption("l", "list", false, "list companies");
+		options.addOption("d", "delete", false, "delete companies");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -36,24 +38,28 @@ public class TestCliService extends BaseCliService {
 		if (cmd.hasOption("a")) {
 
 			int count = Integer.valueOf(cmd.getOptionValue("a"));
-			System.out.println(String.format("Inserting %s random objects", count));
+			System.out.println(String.format("Inserting %s random companies", count));
 			for (int i = 0; i < count; i++) {
-				TestEntity testEntity = new TestEntity();
-				testEntity.setStringVal(new BigInteger(130, random).toString(32));
-				testEntity.setIntVal(new BigInteger(130, random).intValue());
-				testRepository.save(testEntity);
+				String name = "Company "+new BigInteger(130, random).toString(32);
+				Company company = new Company(name);
+
+				company.getDepartments().add(new Department(company, "IT"));
+				company.getDepartments().add(new Department(company, "HR"));
+				company.getDepartments().add(new Department(company, "Sales"));
+
+				testRepository.save(company);
 			}
 
 		} else if (cmd.hasOption("l")) {
 
-			System.out.println("Listing all objects\n");
+			System.out.println("Listing all companies\n");
 
-			for (TestEntity testEntity: (List<TestEntity>) testRepository.findAll().list())
-				System.out.println(testEntity.toString());
+			for (Company company : (List<Company>) testRepository.findAll().list())
+				System.out.println(company.toString());
 
 		} else if (cmd.hasOption("d")) {
 
-			System.out.println("Deleting all objects\n");
+			System.out.println("Deleting all companies\n");
 			testRepository.deleteAll();
 
 		} else {
