@@ -20,8 +20,6 @@ import java.util.List;
 @Service
 public class BirtExample extends BaseCliService {
 
-	protected static SecureRandom random = new SecureRandom();
-
 	@Autowired
 	protected IRepository<Company> testRepository;
 
@@ -40,13 +38,7 @@ public class BirtExample extends BaseCliService {
 			int count = Integer.valueOf(cmd.getOptionValue("a"));
 			System.out.println(String.format("Inserting %s random companies", count));
 			for (int i = 0; i < count; i++) {
-				String name = "Company "+new BigInteger(130, random).toString(32);
-				Company company = new Company(name);
-
-				company.getDepartments().add(new Department(company, "IT"));
-				company.getDepartments().add(new Department(company, "HR"));
-				company.getDepartments().add(new Department(company, "Sales"));
-
+				Company company = PojoHelper.createCompany("Company");
 				testRepository.save(company);
 			}
 
