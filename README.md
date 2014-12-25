@@ -15,8 +15,8 @@ as the workspace to start playing around the report.
 ## Building and testing
 
 1. `mvn package` builds everything with libraries and the `/eclipse/report/company.rptdesign` built-in.
-2. `java -jar birtexample-1.0-SNAPSHOT.jar` displays general help, and
-`java -jar birtexample-1.0-SNAPSHOT.jar birtExample` displays BIRT service help.
+2. `java -jar birtexample-1.0-SNAPSHOT.jar` displays general help.
+3. `java -jar birtexample-1.0-SNAPSHOT.jar birtExample` displays BIRT service help.
 
 ## Example
 
