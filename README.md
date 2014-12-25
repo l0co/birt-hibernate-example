@@ -19,7 +19,7 @@ as the workspace to start playing around the report.
 
 ## Example
 
-1. `java -jar birtexample-1.0-SNAPSHOT.jar -a 10 birtExample` add 10 random companies to DB.
-2. `java -jar birtexample-1.0-SNAPSHOT.jar -l birtExample` list objects from database.
+1. `java -jar birtexample-1.0-SNAPSHOT.jar -a 10 birtExample` adds 10 random companies to DB.
+2. `java -jar birtexample-1.0-SNAPSHOT.jar -l birtExample` lists objects from database.
 3. `java -jar birtexample-1.0-SNAPSHOT.jar -r companies.pdf birtExample` renders the report from template using
 your data from the database.
