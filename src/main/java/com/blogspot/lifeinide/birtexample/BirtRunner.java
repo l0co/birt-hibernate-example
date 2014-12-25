@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -25,9 +26,13 @@ public class BirtRunner {
 
 	private HashMap datasets = new HashMap();
 
+	/**
+	 * @param key The application context key defined in BIRT designer.
+	 * @param objects {@link Collection}, {@link Iterator} or array.
+	 */
 	@SuppressWarnings("unchecked")
-	public void addPojoDataset(String key, Collection collection) {
-		datasets.put(key, collection);
+	public void addPojoDataset(String key, Object objects) {
+		datasets.put(key, objects);
 	}
 
 	public InputStream generatePDFReport(String name) throws Exception {

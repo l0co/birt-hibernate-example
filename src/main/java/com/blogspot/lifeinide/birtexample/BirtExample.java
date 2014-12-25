@@ -62,7 +62,7 @@ public class BirtExample extends BaseCliService {
 
 			System.out.println("Generating companies report\n");
 			BirtRunner runner = new BirtRunner();
-			runner.addPojoDataset(APP_CONTEXT_KEY_MOCKCOMPANYDATASET, companyRepository.findAll().list());
+			runner.addPojoDataset(APP_CONTEXT_KEY_MOCKCOMPANYDATASET, companyRepository.findAll().iterate());
 			InputStream is = runner.generatePDFReport(REPORT_NAME);
 			IOUtils.copy(is, new FileOutputStream(cmd.getOptionValue("r")));
 
