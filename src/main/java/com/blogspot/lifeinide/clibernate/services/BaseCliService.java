@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public abstract class BaseCliService implements ICliService {
 
 	@Override
-	public final void main(String[] args) throws ParseException {
+	public final void main(String[] args) throws Exception {
 		Options options = new Options();
 		addOptions(options);
 
@@ -24,6 +24,6 @@ public abstract class BaseCliService implements ICliService {
 
 	protected abstract void addOptions(Options options);
 
-	protected abstract void run(CommandLine cmd, Options options);
+	protected abstract void run(CommandLine cmd, Options options) throws Exception;
 
 }

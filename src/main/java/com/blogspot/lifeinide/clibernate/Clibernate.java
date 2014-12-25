@@ -14,7 +14,7 @@ public class Clibernate {
 
 	public static final String APPLICATION_CONTEXT_XML = "applicationContext.xml";
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(APPLICATION_CONTEXT_XML);
 		String serviceName = null;
 		if (args.length>0)

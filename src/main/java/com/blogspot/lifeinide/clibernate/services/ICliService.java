@@ -14,6 +14,6 @@ import org.apache.commons.cli.ParseException;
  */
 public interface ICliService {
 
-	public void main(String[] args) throws ParseException;
+	public void main(String[] args) throws Exception;
 
 }
