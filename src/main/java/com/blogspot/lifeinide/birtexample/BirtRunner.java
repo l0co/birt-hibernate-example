@@ -23,8 +23,9 @@ public class BirtRunner {
 
 	public static final Logger logger = LoggerFactory.getLogger(BirtRunner.class);
 
-	private Map<String, Collection> datasets = new HashMap<String, Collection>();
+	private HashMap datasets = new HashMap();
 
+	@SuppressWarnings("unchecked")
 	public void addPojoDataset(String key, Collection collection) {
 		datasets.put(key, collection);
 	}
@@ -42,6 +43,7 @@ public class BirtRunner {
 
 			EngineConfig config = new EngineConfig();
 			config.setEngineHome(System.getProperty("java.io.tmpdir"));
+			config.setAppContext(datasets);
 			Platform.startup(config);
 			IReportEngineFactory factory = (IReportEngineFactory) Platform
 				.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
@@ -53,6 +55,7 @@ public class BirtRunner {
 			IReportRunnable runnable = engine.openReportDesign(is);
 
 			// execute report
+			logger.debug("Generating report ...");
 			RenderOption renderOption = null;
 			renderOption = new PDFRenderOption();
 			renderOption.setOutputFormat("pdf");
