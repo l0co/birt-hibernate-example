@@ -51,9 +51,24 @@
 			<version>1.4.184</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.eclipse.birt.runtime</groupId>
+			<artifactId>org.eclipse.birt.runtime</artifactId>
+			<version>4.4.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>eclipse/report</directory>
+				<includes>
+					<include>*.rptdesign</include>
+				</includes>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
