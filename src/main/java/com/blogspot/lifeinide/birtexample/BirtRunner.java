@@ -43,7 +43,6 @@ public class BirtRunner {
 
 			EngineConfig config = new EngineConfig();
 			config.setEngineHome(System.getProperty("java.io.tmpdir"));
-			config.setAppContext(datasets);
 			Platform.startup(config);
 			IReportEngineFactory factory = (IReportEngineFactory) Platform
 				.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
@@ -63,6 +62,7 @@ public class BirtRunner {
 			renderOption.setOutputStream(out);
 
 			IRunAndRenderTask task = engine.createRunAndRenderTask(runnable);
+			task.setAppContext(datasets);
 			task.setRenderOption(renderOption);
 			task.run();
 			return new ByteArrayInputStream(out.toByteArray());
