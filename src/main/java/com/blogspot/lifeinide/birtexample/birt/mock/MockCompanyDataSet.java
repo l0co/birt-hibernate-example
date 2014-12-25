@@ -1,6 +1,7 @@
 package com.blogspot.lifeinide.birtexample.birt.mock;
 
 import com.blogspot.lifeinide.birtexample.PojoHelper;
+import com.blogspot.lifeinide.birtexample.model.Company;
 
 public class MockCompanyDataSet {
 
@@ -10,7 +11,9 @@ public class MockCompanyDataSet {
 		if (idx--==0) // stop iteration on 10 objects
 			return null;
 
-		return PojoHelper.createCompany("Mock ");
+		Company company = PojoHelper.createCompany("Mock ");
+		company.setId(10-idx);
+		return company;
 	}
 
 }

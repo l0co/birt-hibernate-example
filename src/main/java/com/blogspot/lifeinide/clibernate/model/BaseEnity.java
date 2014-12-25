@@ -22,6 +22,10 @@ public class BaseEnity {
 	@Column(updatable = false, insertable = false)
 	protected String classname;
 
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
 	}
