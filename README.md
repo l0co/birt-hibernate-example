@@ -4,8 +4,7 @@ BIRT + HIBERNATE example
 Example application of BIRT usage with Hibernate data sources (using POJO data source), based on
 [clibernate](https://github.com/l0co/clibernate) project.
 
-More information and approach description is here:
-http://lifeinide.blogspot.com/2014/12/birt-with-hibernate-using-pojo-s.html.
+More information and approach description is [here](https://www.lifeinide.com/post/2014-12-25-birt-with-hibernate-using-pojos/).
 
 ## BIRT report
 
